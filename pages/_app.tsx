@@ -1,43 +1,43 @@
-import '../styles/globals.css';
+import "../styles/globals.css";
 
-import type { AppProps } from 'next/app';
-import { builder, Builder, withChildren } from '@builder.io/react';
-import { Header } from '../components/Header';
-import { ShoesViewer } from '../components/ShoesViewer';
-import { SourceCodeLink } from '../components/SourceCodeLink';
+import type { AppProps } from "next/app";
+import { builder, Builder, withChildren } from "@builder.io/react";
+import { Header } from "../components/Header";
+import { ShoesViewer } from "../components/ShoesViewer";
+import { SourceCodeLink } from "../components/SourceCodeLink";
 
 // Initialize builder with your apiKey
-builder.init('YOUR_PUBLIC_KEY');
+builder.init("c7bd3a72af8a4e43ab51687c4437b35d");
 
 // Register Header component so it's available in the drag-and-drop tool
 Builder.registerComponent(Header, {
-  name: 'Header',
+  name: "Header",
   inputs: [
     {
-      name: 'title',
-      type: 'string',
+      name: "title",
+      type: "string",
     },
     {
-      name: 'subtitle',
-      type: 'string',
+      name: "subtitle",
+      type: "string",
     },
   ],
 });
 
 // Register ModelView component as dragable component in the builder editor
 Builder.registerComponent(ShoesViewer, {
-  name: 'Shoes',
+  name: "Shoes",
   inputs: [
     {
-      name: 'nuShoes',
-      type: 'number',
-      friendlyName: 'Number of shoes',
+      name: "nuShoes",
+      type: "number",
+      friendlyName: "Number of shoes",
       defaultValue: 100,
     },
     {
-      name: 'ambientLight',
-      type: 'number',
-      friendlyName: 'Ambient light intensity',
+      name: "ambientLight",
+      type: "number",
+      friendlyName: "Ambient light intensity",
       defaultValue: 0.5,
     },
   ],
@@ -45,28 +45,28 @@ Builder.registerComponent(ShoesViewer, {
 
 // Register ModelView component as dragable component in the builder editor
 Builder.registerComponent(withChildren(SourceCodeLink), {
-  name: 'SourceCodeLink',
+  name: "SourceCodeLink",
   inputs: [
     {
-      name: 'fileName',
-      type: 'string',
+      name: "fileName",
+      type: "string",
       required: true,
     },
     {
-      name: 'line',
-      type: 'number',
+      name: "line",
+      type: "number",
     },
     {
-      name: 'column',
-      type: 'number',
+      name: "column",
+      type: "number",
     },
   ],
   hideFromInsertMenu: true,
   canHaveChildren: true,
   defaultChildren: [
     {
-      '@type': '@builder.io/sdk:Element',
-      component: { name: 'Text', options: { text: 'Open source code' } },
+      "@type": "@builder.io/sdk:Element",
+      component: { name: "Text", options: { text: "Open source code" } },
     },
   ],
 });
